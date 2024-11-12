@@ -5,3 +5,10 @@ services:
       - .:/app
     ports:
       - 9502:9502
+  websocket:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 9502:9502
+    entrypoint: ["php", "src/index.php"]

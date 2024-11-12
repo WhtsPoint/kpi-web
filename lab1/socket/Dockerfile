@@ -27,5 +27,3 @@ RUN apt-get autoremove -y && rm -rf /var/lib/apt/lists/*
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 WORKDIR app
-
-CMD ["php", "src/index.php"]
