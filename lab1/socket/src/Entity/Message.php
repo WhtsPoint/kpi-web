@@ -5,13 +5,13 @@ namespace App\Entity;
 class Message
 {
     public function __construct(
-        private readonly User $author,
+        private readonly ConnectedUser $author,
         private readonly string $message,
         private readonly \DateTimeImmutable $createdAt
     ) {
     }
 
-    public function getAuthor(): User
+    public function getAuthor(): ConnectedUser
     {
         return $this->author;
     }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Chat;
 use App\Entity\ChatPool;
+use App\Entity\SendMessageInterface;
 use Exception;
 use OpenSwoole\WebSocket\Server;
 use Swoole\Http\Request;
@@ -11,7 +12,8 @@ use Swoole\Http\Request;
 class ChatController
 {
     public function __construct(
-        private readonly ChatPool $chatPool
+        private readonly ChatPool $chatPool,
+        private readonly SendMessageInterface $sendMessage
     ) {
     }
 
@@ -29,6 +31,6 @@ class ChatController
      */
     public function createChat(string $name): void
     {
-        $this->chatPool->addChat(new Chat($name));
+        $this->chatPool->addChat(new Chat($name, $this->sendMessage));
     }
 }

@@ -6,5 +6,5 @@ use App\Dto\ActionDto;
 
 interface ActionInterface
 {
-    public function do(ActionDto $dto);
+    public function do(ActionDto $dto): array;
 }

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 class ConnectedUser
 {
-    private ?User $chatUser = null;
+    private string $name = 'Guest';
 
     public function __construct(
         private readonly int $id
@@ -16,13 +16,13 @@ class ConnectedUser
         return $this->id;
     }
 
-    public function getChatUser(): ?User
+    public function setName(string $name): void
     {
-        return $this->chatUser;
+        $this->name = $name;
     }
 
-    public function setChatUser(?User $chatUser): void
+    public function getName(): string
     {
-        $this->chatUser = $chatUser;
+        return $this->name;
     }
 }

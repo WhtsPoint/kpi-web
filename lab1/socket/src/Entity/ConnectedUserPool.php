@@ -24,16 +24,32 @@ class ConnectedUserPool
     /**
      * @throws Exception
      */
+    public function getById(int $id): ConnectedUser
+    {
+        foreach ($this->users as $user) {
+            if ($user->getId() === $id) {
+                return $user;
+            }
+        }
+
+        throw new Exception('User with this id does not exist');
+    }
+
+    /**
+     * @throws Exception
+     */
     public function removeById(int $id): void
     {
         if (in_array($id, $this->getIds(), true) === true) {
             throw new Exception('User with this id already set');
         }
 
-        $this->users = array_filter($this->users, fn (ConnectedUser $user) => $user->getId() !== $id);
+        $this->users = array_values(array_filter($this->users, fn (ConnectedUser $user) => $user->getId() !== $id));
     }
 
-    /** @return string[] */
+    /**
+     * @return string[]
+     */
     public function getIds(): array
     {
         return array_map(fn (ConnectedUser $user) => $user->getId(), $this->users);
