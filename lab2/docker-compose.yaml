@@ -1,0 +1,24 @@
+services:
+  php:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 9502:9502
+  http:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 80:80
+    entrypoint: ["php", "index.php"]
+    environment:
+      - MONGO_URL=mongodb://root:root@host.docker.internal:27017
+      - JWT_SECRET=test
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root

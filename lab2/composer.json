@@ -1,0 +1,22 @@
+{
+  "name": "whtspoint/socket-init",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "WhtsPoint",
+      "email": "whtspoint@gmail.com"
+    }
+  ],
+  "require": {
+    "openswoole/core": "22.0.0",
+    "mongodb/mongodb": "^1.20",
+    "ext-mongodb": "*"
+  },
+  "require-dev": {
+    "openswoole/ide-helper": "^22.1"
+  }
+}
